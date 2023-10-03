@@ -72,52 +72,52 @@ const Header = () => {
     <header className="bg-slate-50 w-full flex items-center p-3 shadow mb-2">
         <Sheet>
             <SheetTrigger asChild>
-                <Menu className="w-12 h-12 md:hidden mr-4" />
+                <Menu className="w-12 h-12 mr-4 md:hidden text-slate-800" />
             </SheetTrigger>
             <SheetContent className="overflow-scroll">
                     <nav className="mt-4">
                         <ul className="flex flex-col gap-3">
                             <li className="mb-2">
-                                <Button  className="p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">
-                                    <Search className="w-5 h-5 ml-auto text-green-800"/>
+                                <Button  className="p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                    <Search className="w-5 h-5 ml-auto text-slate-800"/>
                                 </Button>
                             </li>
-                            <li className="mb-2 p-2 rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none">
+                            <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
                                 صفحه اصلی
                             </li>
-                            <li className="mb-2 p-2 rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none overflow-scroll">
+                            <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none overflow-scroll">
                                 <Accordion type="single" collapsible>
                                     <AccordionItem value="item-1" className="border-none">
                                         <AccordionTrigger>شعبه</AccordionTrigger>
                                             <AccordionContent>
                                                 <ul className="flex flex-col">
-                                                    <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">اکباتان</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">چالوس</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">اقدسیه</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">ونک</li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اکباتان</li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">چالوس</li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اقدسیه</li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">ونک</li>
                                                 </ul>
                                         </AccordionContent>
                                     </AccordionItem>
                                 </Accordion>
                             </li>
-                            <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">
+                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
                                 <Accordion type="single" collapsible>
                                     <AccordionItem value="item-2" className="border-none">
                                         <AccordionTrigger>منو</AccordionTrigger>
                                             <AccordionContent>
                                                 <ul className="flex flex-col">
-                                                    <li className="mb-2 p-2  rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none ">غذای اصلی</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none ">پیش غذا</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none ">دسر</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-green-200 hover:bg-green-400 w-full border-none outline-none ">نوشیدنی</li>
+                                                    <li className="mb-2 p-2  rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">غذای اصلی</li>
+                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">پیش غذا</li>
+                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">دسر</li>
+                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">نوشیدنی</li>
                                                 </ul>
                                         </AccordionContent>
                                     </AccordionItem>
                                 </Accordion>
                             </li>
-                            <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">اعطای نمایندگی</li>
-                            <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">درباره ما</li>
-                            <li className="mb-2 rounded-md p-2 bg-green-200 hover:bg-green-400 w-full border-none outline-none">تماس با ما</li>
+                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اعطای نمایندگی</li>
+                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">درباره ما</li>
+                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">تماس با ما</li>
                         </ul>
                     </nav>
             </SheetContent>
