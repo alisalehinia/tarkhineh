@@ -135,21 +135,29 @@ const Header = () => {
             <li className={isCurrentPage('/') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
                 <Link href="/">صفحه اصلی</Link>
             </li>
-            <li className={`group relative ${isCurrentPage('/branch') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}`}>
+            <li className={`group relative `}>
                 <Link href="/branch"
-                className="flex gap-1 items-end justify-end"
+                className="flex gap-1 items-end justify-end  pb-1"
                 >
-                   <span >
-                    {params?.branchName === "ekbatan" ? "اکباتان" : 
-                    params?.branchName === "aghdasieh" ? "اقدسیه" :
-                    params?.branchName === "chalus" ? "چالوس" :
-                    params?.branchName === "vanak" ? "ونک" :
-                    "شعبه"
+                   
+                    {params?.branchName === "ekbatan" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1"> اکباتان</span>: 
+                    params?.branchName === "aghdasieh" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1">اقدسیه</span>  :
+                    params?.branchName === "chalus" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1">چالوس</span>  :
+                    params?.branchName === "vanak" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1">ونک</span> :
+                    <span 
+                    className={`${isCurrentPage('/branch') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' 
+                    : ''
+                    }`}>شعبه</span>
                     }
-                   </span>
+                  
                             
                     
-                <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-all duration-150" />
+                <ChevronDown className={`w-5 h-5 group-hover:rotate-180 transition-all duration-150
+                 ${params?.branchName === "ekbatan"
+                  || params?.branchName === "aghdasieh" 
+                  || params?.branchName === "chalus"
+                   ||  params?.branchName === "vanak"
+                    ? 'text-green-500' : ''}`} />
                 </Link>
                 <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-10">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
