@@ -88,7 +88,9 @@ const Header = () => {
                                 </Button>
                             </li>
                             <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                <Link href="/">
                                 صفحه اصلی
+                                </Link>
                             </li>
                             <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none overflow-scroll">
                                 <Accordion type="single" collapsible>
@@ -96,10 +98,18 @@ const Header = () => {
                                         <AccordionTrigger className=" py-0">شعبه</AccordionTrigger>
                                             <AccordionContent>
                                                 <ul className="flex flex-col">
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اکباتان</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">چالوس</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اقدسیه</li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">ونک</li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                                        <Link href="/branch/ekbatan">اکباتان</Link>
+                                                    </li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                                        <Link href="/branch/chalus">چالوس</Link>
+                                                    </li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                                        <Link href="/branch/aghdasieh">اقدسیه</Link>
+                                                    </li>
+                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                                        <Link href="/branch/vanak">ونک</Link>
+                                                    </li>
                                                 </ul>
                                         </AccordionContent>
                                     </AccordionItem>

@@ -15,7 +15,7 @@ interface FoodCardProps {
 
 const FoodCard = ({image,name,price,score,discount,newPrice,numberOfScores}:FoodCardProps) => {
   return (
-    <div className="mx-auto sm:w-60 sm:m-2 mb-4 w-full shadow-xl hover:shadow transition-all flex-shrink-0  rounded h-96 relative">
+    <div className="mx-auto sm:w-60 sm:m-2 mb-4 w-full shadow-xl hover:shadow transition-all flex-shrink-0 bg-white rounded h-96 relative">
             <Image src={image} alt="branch name" className='mx-auto h-52 bg-[80%] mb-2'/>
             <h4 className='text-center font-semibold text-xl  mb-3'>{name}</h4>
             <div className='p-1 grid grid-rows-2 grid-cols-2 gap-1'>

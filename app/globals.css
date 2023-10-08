@@ -128,3 +128,24 @@ li{
   background-size: cover;
   z-index: 1000;
 }
+.branch_hero_image_1{
+  width: 100%;
+  height: 70vh; 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 90%, rgba(0, 0, 0, 0.7)) 80%, url("../public/branch/slider1.jpg");
+  background-size: 80%; 
+  background-position: center;
+}
+.branch_hero_image_2{
+  width: 100%;
+  height: 70vh; 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 90%, rgba(0, 0, 0, 0.7)) 80%, url("../public/branch/slider2.jpg");
+  background-size: 80%; 
+  background-position: center;
+}
+.branch_hero_image_3{
+  width: 100%;
+  height: 70vh; 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 90%, rgba(0, 0, 0, 0.7)) 80%, url("../public/branch/slider3.jpg");
+  background-size: 80%; 
+  background-position: center;
+}
