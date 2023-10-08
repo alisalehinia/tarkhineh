@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 
 import Logo from '@/public/Logo.png'
 import { ChevronDown,CupSoda,IceCream ,Soup,Pizza,User,ShoppingCart,Search,CreditCard,Bookmark,MapPin,LogOut, Menu} from "lucide-react"
@@ -52,6 +52,7 @@ const Header = () => {
 
     const ref = useRef<HTMLDivElement | null>(null);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState<boolean>(false);
+
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
           if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -68,6 +69,8 @@ const Header = () => {
         };
       }, [ref]);
 
+      const params = useParams();
+
   return (
     <header className="bg-slate-50 w-full flex items-center p-3 shadow mb-2">
         <Sheet>
@@ -78,7 +81,9 @@ const Header = () => {
                     <nav className="mt-4">
                         <ul className="flex flex-col gap-3">
                             <li className="mb-2">
-                                <Button  className="p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
+                                <Button 
+                                onClick={()=>setIsAlertDialogOpen(true)}
+                                className="p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
                                     <Search className="w-5 h-5 ml-auto text-slate-800"/>
                                 </Button>
                             </li>
@@ -88,7 +93,7 @@ const Header = () => {
                             <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none overflow-scroll">
                                 <Accordion type="single" collapsible>
                                     <AccordionItem value="item-1" className="border-none">
-                                        <AccordionTrigger>شعبه</AccordionTrigger>
+                                        <AccordionTrigger className=" py-0">شعبه</AccordionTrigger>
                                             <AccordionContent>
                                                 <ul className="flex flex-col">
                                                     <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اکباتان</li>
@@ -103,7 +108,7 @@ const Header = () => {
                             <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
                                 <Accordion type="single" collapsible>
                                     <AccordionItem value="item-2" className="border-none">
-                                        <AccordionTrigger>منو</AccordionTrigger>
+                                        <AccordionTrigger className=" py-0">منو</AccordionTrigger>
                                             <AccordionContent>
                                                 <ul className="flex flex-col">
                                                     <li className="mb-2 p-2  rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">غذای اصلی</li>
@@ -121,7 +126,7 @@ const Header = () => {
                         </ul>
                     </nav>
             </SheetContent>
-            </Sheet>
+        </Sheet>
             <div className=" mx-auto w-full md:w-auto">
                 <Image src={Logo} alt="logo" className="md:ml-4 mx-auto"/>
             </div>
@@ -133,23 +138,41 @@ const Header = () => {
             <li className={`group relative ${isCurrentPage('/branch') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}`}>
                 <Link href="/branch"
                 className="flex gap-1 items-end justify-end"
-                ><span>شعبه</span>
-                <ChevronDown className="w-5 h-5" />
+                >
+                   <span >
+                    {params?.branchName === "ekbatan" ? "اکباتان" : 
+                    params?.branchName === "aghdasieh" ? "اقدسیه" :
+                    params?.branchName === "chalus" ? "چالوس" :
+                    params?.branchName === "vanak" ? "ونک" :
+                    "شعبه"
+                    }
+                   </span>
+                            
+                    
+                <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-all duration-150" />
                 </Link>
                 <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-10">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>اکباتان</span>
+                                <Link href="http://localhost:3000//branch/ekbatan">
+                                    <span>اکباتان</span>
+                                </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>چالوس</span>
+                                <Link href="/branch/chalus">
+                                    <span>چالوس</span>
+                                </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>اقدسیه</span>
+                                <Link href="http://localhost:3000//branch/aghdasieh">
+                                    <span>اقدسیه</span>
+                                </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>ونک</span>
+                                <Link href="http://localhost:3000//branch/vanak">
+                                    <span>ونک</span>
+                                </Link>
                             </li>
                         </ul>
                         </nav>
@@ -215,6 +238,7 @@ const Header = () => {
                         className="w-full p-2 rounded-lg border border-gray-200 focus:outline-none focus:shadow ml-1"
                         placeholder="جستجو"
                         />
+                        
                         <AlertDialogCancel>بستن</AlertDialogCancel>
                     </AlertDialogFooter>
                 </AlertDialogContent>
@@ -224,7 +248,7 @@ const Header = () => {
             </Button>
             <Button className="p-2 bg-green-200 hover:bg-green-400 group relative">
                 <User className="w-5 h-5  text-green-800" />
-                <ChevronDown className="w-5 h-5  text-green-800"/>
+                <ChevronDown className="w-5 h-5  text-green-800 group-hover:rotate-180 transition-all duration-150"/>
                 <div className="hidden group-hover:block absolute top-8 left-0 hover:block text-slate-800 z-10">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
