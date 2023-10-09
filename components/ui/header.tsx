@@ -92,7 +92,7 @@ const Header = () => {
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2" className="border-none">
-                            <AccordionTrigger className=" py-0 block p-2 border-b flex">منو</AccordionTrigger>
+                            <AccordionTrigger className=" py-0  p-2 border-b flex">منو</AccordionTrigger>
                                 <AccordionContent>
                                 <Link onClick={closeDrawer} className="block p-2 border-b " href="/">غذای اصلی</Link>
                                 <Link onClick={closeDrawer} className="block p-2 border-b " href="/">پیش غذا</Link>

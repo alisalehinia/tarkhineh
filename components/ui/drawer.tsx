@@ -22,7 +22,6 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children }) => {
             const touchX = event.touches[0].clientX;
             const deltaX = touchX - touchStartXRef.current;
     
-            // You can adjust the threshold value as needed
             const swipeThreshold = 50;
     
             if (deltaX > swipeThreshold) {

@@ -13,6 +13,7 @@ import profile2 from "../../../public/profile2.png";
 import { Clock, LocateIcon, PhoneIcon, ScrollText } from 'lucide-react';
 import CarouselComponent from '@/components/ui/carousel';
 import Slider, { FoodItem, comment } from '@/components/ui/slider';
+import PureSlider from '@/components/ui/pureSlider';
 
 
 
@@ -199,10 +200,14 @@ const commentsList: comment[] = [
 const BranchPage = () => {
     const params = useParams();
     console.log(params);
-   
+   const branchName = params?.branchName === "ekbatan" ? "اکباتان" :
+   params?.branchName === "aghdasieh" ? "اقدسیه" :
+   params?.branchName === "chalus" ? "چالوس" :
+   params?.branchName === "vanak" ? "ونک" : ""
     
   return (<div className=''>
               <div className='mb-4'>
+                <h2 className='text-slate-800 font-extrabold text-2xl text-center mb-2 gradient-text drop-shadow-lg shadow-green-500'>تصاویر  شعبه {branchName}</h2>
                 <CarouselComponent />
               </div>
               <div className='bg-green-700 rounded-lg p-4 mb-4'>
@@ -238,6 +243,7 @@ const BranchPage = () => {
               <h2 className='font-extrabold p-2 text-2xl text-slate-800 text-center' >نظرات کاربران</h2>
                 <Slider commentsList={commentsList} scroll={800} />
               </div>
+              {/* <PureSlider foodItems={iranianFood} /> */}
           </div>
   )
 }
