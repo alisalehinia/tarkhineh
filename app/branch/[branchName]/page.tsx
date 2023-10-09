@@ -7,12 +7,13 @@ import food3 from "../../../public/branchfoods/food3.png"
 import food4 from "../../../public/branchfoods/food4.png"
 import food5 from "../../../public/branchfoods/food5.png"
 import food6 from "../../../public/branchfoods/food6.png"
+import profile1 from "../../../public/profile1.png";
+import profile2 from "../../../public/profile2.png";
 
-import FoodCard from '@/components/ui/foodCard';
-import { ArrowLeftIcon, ArrowRightIcon, Clock, LocateIcon, PhoneIcon, ScrollText } from 'lucide-react';
+import { Clock, LocateIcon, PhoneIcon, ScrollText } from 'lucide-react';
 import CarouselComponent from '@/components/ui/carousel';
-import Slider, { FoodItem } from '@/components/ui/slider';
-import Carousel from '@/components/ui/slider';
+import Slider, { FoodItem, comment } from '@/components/ui/slider';
+
 
 
 
@@ -163,7 +164,38 @@ const iranianFood: FoodItem[] = [
     numberOfScores:"53"
   }
 ];
+const commentsList: comment[] = [
+  {
+    image:profile1,
+    name:"ارزو علیزاده",
+    date: "25 شهریور",
+    text:"از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم. "
+  },
+  {
+    image:profile2,
+    name:"سردار وظیفه",
+    date: "13 اسفند",
+    text:"از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم. "
+  },
+  {
+    image:profile1,
+    name:"ارزو علیزاده",
+    date: "25 شهریور",
+    text:"از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم. "
+  },{
+    image:profile2,
+    name:"سردار وظیفه",
+    date: "13 اسفند",
+    text:"از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم. "
+  },
+  {
+    image:profile1,
+    name:"ارزو علیزاده",
+    date: "25 شهریور",
+    text:"از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم. "
+  },
 
+]
 const BranchPage = () => {
     const params = useParams();
     console.log(params);
@@ -175,11 +207,11 @@ const BranchPage = () => {
               </div>
               <div className='bg-green-700 rounded-lg p-4 mb-4'>
                 <h2 className='font-extrabold p-2 text-2xl text-white' > غذاهای ایرانی</h2>
-                  <Slider foodData={iranianFood} />
+                  <Slider foodData={iranianFood} scroll={440} />
                 </div>
                 <div>
                 <h2 className='font-extrabold p-2 text-2xl text-slate-800' > غذاهای محبوب</h2>
-                <Slider foodData={popularFoods} />
+                <Slider foodData={popularFoods} scroll={440} />
                 </div>
                 <div>
                 <button className='text-green-700 border-2 border-green-700 flex items-center gap-1 p-2 rounded-lg mx-auto mb-4'>
@@ -188,7 +220,7 @@ const BranchPage = () => {
                 </button>
               </div>
               {/* info */}
-              <div className='w-full md:w-2/3 mx-auto rounded-md shadow-lg flex items-center flex-wrap text-xs font-medium mb-4 text-slate-800 p-2'>
+              <div className='w-full md:w-2/3 mx-auto rounded-md shadow-lg flex items-center flex-wrap text-xs font-medium mb-6 text-slate-800 p-2'>
                 <div className='w-full md:w-1/3 flex md:flex-col  items-center gap-2 gap-x-4'>
                   <PhoneIcon className='w-7 h-7' />
                   <span>021-33534367</span>
@@ -201,6 +233,10 @@ const BranchPage = () => {
                   <Clock className='w-7 h-7' />
                   <span>همه‌روزه از ساعت ۱۲  الی ۲۳ </span>
                 </div>
+              </div>
+              <div>
+              <h2 className='font-extrabold p-2 text-2xl text-slate-800 text-center' >نظرات کاربران</h2>
+                <Slider commentsList={commentsList} scroll={800} />
               </div>
           </div>
   )

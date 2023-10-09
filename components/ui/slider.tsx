@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import FoodCard from '@/components/ui/foodCard';
-import { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import { comment } from 'postcss';
 
 export interface FoodItem {
   image: StaticImageData;
@@ -12,23 +13,32 @@ export interface FoodItem {
   numberOfScores: string;
   score: string;
 }
-
-interface SliderProps {
-  foodData: FoodItem[];
+export interface comment {
+  image: StaticImageData;
+  name: string;
+  date: string;
+  text: string;
 }
 
-const Slider: React.FC<SliderProps> = ({ foodData }) => {
+interface SliderProps {
+  foodData?: FoodItem[];
+  commentsList?: comment[];
+  scroll: number;
+}
+
+
+const Slider: React.FC<SliderProps> = ({ foodData,commentsList,scroll }) => {
   const cardContainerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft -= 440;
+      cardContainerRef.current.scrollLeft -= scroll;
     }
   };
 
   const scrollRight = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft += 440;
+      cardContainerRef.current.scrollLeft += scroll;
     }
   };
 
@@ -39,7 +49,7 @@ const Slider: React.FC<SliderProps> = ({ foodData }) => {
         style={{ overflow: 'hidden' }}
         ref={cardContainerRef}
       >
-        {foodData.map((food, index) => (
+        {foodData?.map((food, index) => (
           <FoodCard
             key={index}
             image={food.image}
@@ -51,6 +61,24 @@ const Slider: React.FC<SliderProps> = ({ foodData }) => {
             score={food.score}
           />
         ))}
+        {
+          commentsList?.map((comment,index)=>(
+            <div key={index} className='flex-shrink-0 w-[90%] md:w-1/2 flex-col md:flex-row rounded-md border mx-1 bg-slate-50 border-slate-400 p-4 gap-4 flex justify-center items-center'>
+              <div className='flex flex-col text-xs text-slate-500 justify-center  w-24 min-w-fit items-center '>
+                <Image src={comment.image} alt="user" className='rounded-full mb-2' width={80} height={80} />
+                <div>
+                  {comment.name}
+                </div>
+                <div>
+                  {comment.date}
+                </div>
+              </div>
+              <div >
+                {comment.text}
+              </div>
+            </div>
+          ))
+        }
       </div>
       <button onClick={scrollLeft} className='absolute left-0 top-1/2'>
         <ArrowLeftIcon className='bg-white p-2 rounded-full w-10 h-10 md:ml-4 hover:bg-slate-400 hover:text-white shadow' />

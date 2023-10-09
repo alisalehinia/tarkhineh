@@ -4,18 +4,8 @@ import Link from "next/link"
 import { useParams, usePathname } from 'next/navigation'
 
 import Logo from '@/public/Logo.png'
-import { ChevronDown,CupSoda,IceCream ,Soup,Pizza,User,ShoppingCart,Search,CreditCard,Bookmark,MapPin,LogOut, Menu} from "lucide-react"
+import { ChevronDown,CupSoda,IceCream ,Soup,Pizza,User,ShoppingCart,Search,CreditCard,Bookmark,MapPin,LogOut, Menu, MenuIcon} from "lucide-react"
 import {Button} from "@/components/ui/button"
-import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-  } from "@/components/ui/sheet"
 
 import {
     Accordion,
@@ -37,6 +27,7 @@ import {
   } from "@/components/ui/alert-dialog"
 import { useOrigin } from "@/hooks/use-origin";
 import { useEffect, useRef, useState } from "react";
+import Drawer from "./drawer";
   
 
 
@@ -71,14 +62,25 @@ const Header = () => {
 
       const params = useParams();
 
+    //   ? /////////////
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const openDrawer = () => {
+      setIsDrawerOpen(true);
+    };
+  
+    const closeDrawer = () => {
+      setIsDrawerOpen(false);
+    };
+
   return (
     <header className="bg-slate-50 w-full flex items-center p-3 shadow mb-2">
-        <Sheet>
-            <SheetTrigger asChild>
-                <Menu className="w-12 h-12 mr-4 md:hidden text-slate-800" />
-            </SheetTrigger>
-            <SheetContent className="overflow-scroll">
-                    <nav className="mt-4">
+          <div className="relative md:hidden block">
+            <button onClick={openDrawer} className="p-2 rounded-full">
+                <MenuIcon className="w-8 h-8 bg-white text-slate-800" />
+            </button>
+            <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+            <nav className="mt-4">
                         <ul className="flex flex-col gap-3">
                             <li className="mb-2">
                                 <Button 
@@ -135,8 +137,8 @@ const Header = () => {
                             <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">تماس با ما</li>
                         </ul>
                     </nav>
-            </SheetContent>
-        </Sheet>
+            </Drawer>
+        </div>
             <div className=" mx-auto w-full md:w-auto">
                 <Image src={Logo} alt="logo" className="md:ml-4 mx-auto"/>
             </div>
