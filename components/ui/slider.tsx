@@ -22,13 +22,13 @@ const Slider: React.FC<SliderProps> = ({ foodData }) => {
 
   const scrollLeft = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft -= 840;
+      cardContainerRef.current.scrollLeft -= 440;
     }
   };
 
   const scrollRight = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft += 840;
+      cardContainerRef.current.scrollLeft += 440;
     }
   };
 

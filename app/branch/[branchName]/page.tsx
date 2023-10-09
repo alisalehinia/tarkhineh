@@ -9,9 +9,10 @@ import food5 from "../../../public/branchfoods/food5.png"
 import food6 from "../../../public/branchfoods/food6.png"
 
 import FoodCard from '@/components/ui/foodCard';
-import { ArrowLeftIcon, ArrowRightIcon, ScrollText } from 'lucide-react';
+import { ArrowLeftIcon, ArrowRightIcon, Clock, LocateIcon, PhoneIcon, ScrollText } from 'lucide-react';
 import CarouselComponent from '@/components/ui/carousel';
 import Slider, { FoodItem } from '@/components/ui/slider';
+import Carousel from '@/components/ui/slider';
 
 
 
@@ -166,7 +167,8 @@ const iranianFood: FoodItem[] = [
 const BranchPage = () => {
     const params = useParams();
     console.log(params);
-
+   
+    
   return (<div className=''>
               <div className='mb-4'>
                 <CarouselComponent />
@@ -184,6 +186,21 @@ const BranchPage = () => {
                   <span>مشاهده ی منوی کامل</span>
                   <ScrollText className='w-8 h-8 ' />
                 </button>
+              </div>
+              {/* info */}
+              <div className='w-full md:w-2/3 mx-auto rounded-md shadow-lg flex items-center flex-wrap text-xs font-medium mb-4 text-slate-800 p-2'>
+                <div className='w-full md:w-1/3 flex md:flex-col  items-center gap-2 gap-x-4'>
+                  <PhoneIcon className='w-7 h-7' />
+                  <span>021-33534367</span>
+                </div>
+                <div className='w-full md:w-1/3 flex md:flex-col  items-center gap-2 gap-x-4'>
+                  <LocateIcon className='w-7 h-7' />
+                  <span>شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم</span>
+                </div>
+                <div className='w-full md:w-1/3 flex md:flex-col  items-center gap-2 gap-x-4'>
+                  <Clock className='w-7 h-7' />
+                  <span>همه‌روزه از ساعت ۱۲  الی ۲۳ </span>
+                </div>
               </div>
           </div>
   )
