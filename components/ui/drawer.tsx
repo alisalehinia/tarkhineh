@@ -1,3 +1,4 @@
+'use client';
 import { ArrowRight } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -9,27 +10,64 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children }) => {
     const drawerRef = useRef<HTMLDivElement | null>(null);
+    const touchStartXRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      // Add click event listener when the drawer is open
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      // Remove the event listener when the drawer is closed
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      // Cleanup the event listener when the component unmounts
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, onClose]);
+    useEffect(() => {
+        const handleTouchStart = (event: TouchEvent) => {
+          touchStartXRef.current = event.touches[0].clientX;
+        };
+    
+        const handleTouchMove = (event: TouchEvent) => {
+          if (touchStartXRef.current !== null) {
+            const touchX = event.touches[0].clientX;
+            const deltaX = touchX - touchStartXRef.current;
+    
+            // You can adjust the threshold value as needed
+            const swipeThreshold = 50;
+    
+            if (deltaX > swipeThreshold) {
+              onClose();
+              touchStartXRef.current = null;
+            }
+          }
+        };
+    
+        const handleTouchEnd = () => {
+          touchStartXRef.current = null;
+        };
+    
+        const handleClickOutside = (event: MouseEvent) => {
+          if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+            onClose();
+          }
+        };
+    
+        if (isOpen) {
+          // Add touch event listeners when the drawer is open
+          drawerRef.current?.addEventListener('touchstart', handleTouchStart);
+          drawerRef.current?.addEventListener('touchmove', handleTouchMove);
+          drawerRef.current?.addEventListener('touchend', handleTouchEnd);
+    
+          // Add click event listener when the drawer is open
+          document.addEventListener('mousedown', handleClickOutside);
+        } else {
+          // Remove touch event listeners when the drawer is closed
+          drawerRef.current?.removeEventListener('touchstart', handleTouchStart);
+          drawerRef.current?.removeEventListener('touchmove', handleTouchMove);
+          drawerRef.current?.removeEventListener('touchend', handleTouchEnd);
+    
+          // Remove click event listener when the drawer is closed
+          document.removeEventListener('mousedown', handleClickOutside);
+        }
+    
+        return () => {
+          // Cleanup the event listeners when the component unmounts
+          drawerRef.current?.removeEventListener('touchstart', handleTouchStart);
+          drawerRef.current?.removeEventListener('touchmove', handleTouchMove);
+          drawerRef.current?.removeEventListener('touchend', handleTouchEnd);
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, [isOpen, onClose]);
 
   return (
     <div

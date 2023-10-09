@@ -79,77 +79,47 @@ const Header = () => {
             <button onClick={openDrawer} className="p-2 rounded-full">
                 <MenuIcon className="w-8 h-8 bg-white text-slate-800" />
             </button>
-            <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-            <nav className="mt-4">
-                        <ul className="flex flex-col gap-3">
-                            <li className="mb-2">
-                                <Button 
-                                onClick={()=>setIsAlertDialogOpen(true)}
-                                className="p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                    <Search className="w-5 h-5 ml-auto text-slate-800"/>
-                                </Button>
-                            </li>
-                            <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                <Link href="/">
-                                صفحه اصلی
-                                </Link>
-                            </li>
-                            <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none overflow-scroll">
-                                <Accordion type="single" collapsible>
-                                    <AccordionItem value="item-1" className="border-none">
-                                        <AccordionTrigger className=" py-0">شعبه</AccordionTrigger>
-                                            <AccordionContent>
-                                                <ul className="flex flex-col">
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                                        <Link href="/branch/ekbatan">اکباتان</Link>
-                                                    </li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                                        <Link href="/branch/chalus">چالوس</Link>
-                                                    </li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                                        <Link href="/branch/aghdasieh">اقدسیه</Link>
-                                                    </li>
-                                                    <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                                        <Link href="/branch/vanak">ونک</Link>
-                                                    </li>
-                                                </ul>
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                </Accordion>
-                            </li>
-                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">
-                                <Accordion type="single" collapsible>
-                                    <AccordionItem value="item-2" className="border-none">
-                                        <AccordionTrigger className=" py-0">منو</AccordionTrigger>
-                                            <AccordionContent>
-                                                <ul className="flex flex-col">
-                                                    <li className="mb-2 p-2  rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">غذای اصلی</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">پیش غذا</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">دسر</li>
-                                                    <li className="mb-2 p-2 rounded-md bg-slate-200 hover:bg-slate-400 w-full border-none outline-none ">نوشیدنی</li>
-                                                </ul>
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                </Accordion>
-                            </li>
-                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">اعطای نمایندگی</li>
-                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">درباره ما</li>
-                            <li className="mb-2 rounded-md p-2 bg-slate-200 hover:bg-slate-400 w-full border-none outline-none">تماس با ما</li>
-                        </ul>
-                    </nav>
-            </Drawer>
-        </div>
+                <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+                    <Link href="/" className="p-2 border-b block" onClick={closeDrawer}>خانه</Link>
+                    <Accordion type="single" collapsible>
+                        <AccordionItem value="item-1" className="border-none">
+                            <AccordionTrigger className=" py-0  p-2 border-b flex">شعبه</AccordionTrigger>
+                                <AccordionContent>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/branch/ekbatan">اکباتان</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/branch/chalus">چالوس</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/branch/aghdasieh">اقدسیه</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/branch/vanak">ونک</Link>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2" className="border-none">
+                            <AccordionTrigger className=" py-0 block p-2 border-b flex">منو</AccordionTrigger>
+                                <AccordionContent>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">غذای اصلی</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">پیش غذا</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">دسر</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">نوشیدنی</Link>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>اعطای نمایندگی</Link>
+                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>درباره ما</Link>
+                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>تماس باما</Link>
+
+
+                </Drawer>
+            </div>
             <div className=" mx-auto w-full md:w-auto">
                 <Image src={Logo} alt="logo" className="md:ml-4 mx-auto"/>
             </div>
         <div className="flex-1 flex items-center justify-center">
         <ul className="text-slate-800 gap-8 hidden md:flex">
-            <li className={isCurrentPage('/') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
-                <Link href="/" onClick={closeDrawer}>صفحه اصلی</Link>
+            <li  onClick={closeDrawer} className={isCurrentPage('/') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
+                <Link href="/">صفحه اصلی</Link>
             </li>
-            <li className={`group relative `}>
-                <Link href="/branch" onClick={closeDrawer}
+            <li className={`group relative `} >
+                <Link href="/branch" 
                 className="flex gap-1 items-end justify-end  pb-1"
+                onClick={closeDrawer}
                 >
                    
                     {params?.branchName === "ekbatan" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1"> اکباتان</span>: 
