@@ -62,7 +62,7 @@ const Header = () => {
 
       const params = useParams();
 
-    //   ? /////////////
+    //   ? drawer state 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const openDrawer = () => {
@@ -145,10 +145,10 @@ const Header = () => {
         <div className="flex-1 flex items-center justify-center">
         <ul className="text-slate-800 gap-8 hidden md:flex">
             <li className={isCurrentPage('/') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
-                <Link href="/">صفحه اصلی</Link>
+                <Link href="/" onClick={closeDrawer}>صفحه اصلی</Link>
             </li>
             <li className={`group relative `}>
-                <Link href="/branch"
+                <Link href="/branch" onClick={closeDrawer}
                 className="flex gap-1 items-end justify-end  pb-1"
                 >
                    
@@ -175,22 +175,22 @@ const Header = () => {
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <Link href="http://localhost:3000//branch/ekbatan">
+                                <Link onClick={closeDrawer} href="http://localhost:3000//branch/ekbatan">
                                     <span>اکباتان</span>
                                 </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <Link href="/branch/chalus">
+                                <Link onClick={closeDrawer}  href="/branch/chalus">
                                     <span>چالوس</span>
                                 </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <Link href="http://localhost:3000//branch/aghdasieh">
+                                <Link onClick={closeDrawer} href="http://localhost:3000//branch/aghdasieh">
                                     <span>اقدسیه</span>
                                 </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <Link href="http://localhost:3000//branch/vanak">
+                                <Link onClick={closeDrawer} href="http://localhost:3000//branch/vanak">
                                     <span>ونک</span>
                                 </Link>
                             </li>
@@ -200,7 +200,7 @@ const Header = () => {
             </li>
             <li className={`group relative ${isCurrentPage('/menu') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}`}
             >
-            <Link href="/menu"
+            <Link href="/menu" onClick={closeDrawer}
                 className="flex gap-1 items-end justify-end"
                 ><span>منو</span>
                 <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-all duration-150" />
@@ -229,13 +229,13 @@ const Header = () => {
                 </div>
             </li>
             <li className={isCurrentPage('/Deputize') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
-                <Link href="/Deputize">اعطای نمایندگی</Link>
+                <Link href="/Deputize" onClick={closeDrawer}>اعطای نمایندگی</Link>
             </li>
             <li className={isCurrentPage('/about-us') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
-                <Link href="/about-us">درباره ما</Link>
+                <Link href="/about-us" onClick={closeDrawer}>درباره ما</Link>
             </li>
             <li className={isCurrentPage('/contact-us') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}>
-                <Link href="/contact-us">تماس با ما</Link>
+                <Link href="/contact-us" onClick={closeDrawer}>تماس با ما</Link>
             </li>
         </ul>
         </div>
