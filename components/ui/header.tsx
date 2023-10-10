@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image"
 import Link from "next/link"
-import { useParams, usePathname } from 'next/navigation'
+import { useParams, usePathname, useSearchParams } from 'next/navigation'
 
 import Logo from '@/public/Logo.png'
 import { ChevronDown,CupSoda,IceCream ,Soup,Pizza,User,ShoppingCart,Search,CreditCard,Bookmark,MapPin,LogOut, Menu, MenuIcon} from "lucide-react"
@@ -28,12 +28,12 @@ import {
 import { useOrigin } from "@/hooks/use-origin";
 import { useEffect, useRef, useState } from "react";
 import Drawer from "./drawer";
-  
 
 
 const Header = () => {
 
     const pathName = usePathname();
+    console.log(pathName);
 
     const isCurrentPage = (href: string) => {
       return pathName===href;
@@ -72,6 +72,14 @@ const Header = () => {
     const closeDrawer = () => {
       setIsDrawerOpen(false);
     };
+    const [category,setCategory]=useState("");
+    useEffect(()=>{
+        const startIndex = window.location.search.indexOf('=') + 1;
+        setCategory(window.location.search.substring(startIndex))
+    })
+    
+    
+    
 
   return (
     <header className="bg-slate-50 w-full flex items-center p-3 shadow mb-2">
@@ -94,7 +102,7 @@ const Header = () => {
                         <AccordionItem value="item-2" className="border-none">
                             <AccordionTrigger className=" py-0  p-2 border-b flex">منو</AccordionTrigger>
                                 <AccordionContent>
-                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">غذای اصلی</Link>
+                                <Link onClick={closeDrawer} className={`block p-2 border-b  `} href="/">غذای اصلی</Link>
                                 <Link onClick={closeDrawer} className="block p-2 border-b " href="/">پیش غذا</Link>
                                 <Link onClick={closeDrawer} className="block p-2 border-b " href="/">دسر</Link>
                                 <Link onClick={closeDrawer} className="block p-2 border-b " href="/">نوشیدنی</Link>
@@ -168,9 +176,12 @@ const Header = () => {
                         </nav>
                 </div>
             </li>
-            <li className={`group relative ${isCurrentPage('/menu') ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}`}
+            <li className={`group relative ${isCurrentPage('/menu')  && category==="" ? 'text-green-600 font-semibold border-b border-green-600 pb-1' : ''}`}
             >
-            <Link href="/menu" onClick={closeDrawer}
+            <Link href="/menu" onClick={()=>{
+                closeDrawer()
+                setCategory("");
+            }}
                 className="flex gap-1 items-end justify-end"
                 ><span>منو</span>
                 <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-all duration-150" />
@@ -179,20 +190,28 @@ const Header = () => {
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>غذای اصلی</span>
-                                <Pizza className="w-5 h-5"/>
+                               <Link className={`w-full flex items-center gap-2 ${category==="mainFood" ? `text-green-500` : "text-slate-800"}`} href="/menu/?category=mainFood">
+                                    <span>غذای اصلی</span>
+                                    <Pizza className="w-5 h-5"/>
+                               </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>پیش غذا</span>
-                                <Soup className="w-5 h-5" />
+                                <Link className={`w-full flex items-center gap-2 ${category==="Appetizer" ? `text-green-500` : "text-slate-800"}`} href="/menu/?category=Appetizer">
+                                    <span>پیش غذا</span>
+                                    <Soup className="w-5 h-5" />
+                                </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>دسر</span>
-                                <IceCream className="w-5 h-5"/>
+                                <Link className={`w-full flex items-center gap-2 ${category==="Dessert" ? `text-green-500` : "text-slate-800"}`} href="/menu/?category=Dessert">
+                                    <span>دسر</span>
+                                    <IceCream className="w-5 h-5"/>
+                                </Link>
                             </li>
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
-                                <span>نوشیدنی</span>
-                               <CupSoda className="w-5 h-5"/>
+                                <Link className={`w-full flex items-center gap-2 ${category==="Beverages" ? `text-green-500` : "text-slate-800"}`} href="/menu/?category=Beverages">
+                                    <span>نوشیدنی</span>
+                                    <CupSoda className="w-5 h-5"/>
+                               </Link>
                             </li>
                         </ul>
                         </nav>

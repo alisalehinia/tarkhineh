@@ -198,8 +198,10 @@ const commentsList: comment[] = [
 
 ]
 const BranchPage = () => {
+
     const params = useParams();
     console.log(params);
+   
    const branchName = params?.branchName === "ekbatan" ? "اکباتان" :
    params?.branchName === "aghdasieh" ? "اقدسیه" :
    params?.branchName === "chalus" ? "چالوس" :
@@ -212,11 +214,11 @@ const BranchPage = () => {
               </div>
               <div className='bg-green-700 rounded-lg p-4 mb-4'>
                 <h2 className='font-extrabold p-2 text-2xl text-white' > غذاهای ایرانی</h2>
-                  <Slider foodData={iranianFood} scroll={440} />
+                  <Slider foodData={iranianFood} scroll={100} />
                 </div>
                 <div>
                 <h2 className='font-extrabold p-2 text-2xl text-slate-800' > غذاهای محبوب</h2>
-                <Slider foodData={popularFoods} scroll={440} />
+                <Slider foodData={popularFoods} scroll={100} />
                 </div>
                 <div>
                 <button className='text-green-700 border-2 border-green-700 flex items-center gap-1 p-2 rounded-lg mx-auto mb-4'>
@@ -239,7 +241,7 @@ const BranchPage = () => {
                   <span>همه‌روزه از ساعت ۱۲  الی ۲۳ </span>
                 </div>
               </div>
-              <div>
+              <div className='mb-8'>
               <h2 className='font-extrabold p-2 text-2xl text-slate-800 text-center' >نظرات کاربران</h2>
                 <Slider commentsList={commentsList} scroll={800} />
               </div>

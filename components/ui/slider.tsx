@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import FoodCard from '@/components/ui/foodCard';
 import Image, { StaticImageData } from 'next/image';
@@ -29,16 +30,37 @@ interface SliderProps {
 
 const Slider: React.FC<SliderProps> = ({ foodData,commentsList,scroll }) => {
   const cardContainerRef = useRef<HTMLDivElement | null>(null);
+  const [viewPortWidth,setViewPortWidth] = useState(0);
+
+  useEffect(() => {
+    // Access the viewport width when the component mounts or when the window resizes
+    const handleResize = () => {
+      setViewPortWidth(window.innerWidth);
+      console.log(`Viewport width is ${viewPortWidth}px`);
+    };
+
+    // Attach the event listener to the window
+    window.addEventListener('resize', handleResize);
+
+    // Call the initial handleResize function
+    handleResize();
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [viewPortWidth]);
+
 
   const scrollLeft = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft -= scroll;
+      cardContainerRef.current.scrollLeft -= viewPortWidth - 28;
     }
   };
 
   const scrollRight = () => {
     if (cardContainerRef.current) {
-      cardContainerRef.current.scrollLeft += scroll;
+      cardContainerRef.current.scrollLeft += viewPortWidth - 28;
     }
   };
 
