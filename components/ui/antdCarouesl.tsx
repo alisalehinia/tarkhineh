@@ -72,8 +72,8 @@ const AntDCarousel = ({ foodData, commentsList, scroll }:SliderProps) => {
         ))}
          {
           commentsList?.map((comment,index)=>(
-            <div key={index} className='flex-shrink-0 w-[90%] md:w-1/2 flex-col md:flex-row rounded-md border bg-slate-50 border-slate-400 p-4 m-2 gap-4 flex justify-center items-center'>
-              <div className='flex flex-col text-xs text-slate-500 justify-center ml-auto w-24 min-w-fit items-center '>
+            <div key={index} className='flex-shrink-0 w-[90%] md:w-1/2 flex-col md:flex-row rounded-md border bg-slate-50 border-slate-400 p-4 flex mx-2 justify-center items-center'>
+              <div className='flex flex-col text-xs text-slate-500 justify-center ml-auto w-24 min-w-fit  items-center '>
                 <Image src={comment.image} alt="user" className='rounded-full mb-2' width={80} height={80} />
                 <div>
                   {comment.name}

@@ -152,22 +152,22 @@ const Header = () => {
                 <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-10">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
-                            <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
+                            <li className={`p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between ${params?.branchName === "ekbatan" ? "text-green-500" : "text-slate-800"}`}>
                                 <Link onClick={closeDrawer} href="http://localhost:3000//branch/ekbatan">
                                     <span>اکباتان</span>
                                 </Link>
                             </li>
-                            <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
+                            <li className={`p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between ${params?.branchName === "chalus" ? "text-green-500" : "text-slate-800"}`}>
                                 <Link onClick={closeDrawer}  href="/branch/chalus">
                                     <span>چالوس</span>
                                 </Link>
                             </li>
-                            <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
+                            <li className={`p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between ${params?.branchName === "aghdasieh" ? "text-green-500" : "text-slate-800"}`}>
                                 <Link onClick={closeDrawer} href="http://localhost:3000//branch/aghdasieh">
                                     <span>اقدسیه</span>
                                 </Link>
                             </li>
-                            <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
+                            <li className={`p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between ${params?.branchName === "vanak" ? "text-green-500" : "text-slate-800"}`}>
                                 <Link onClick={closeDrawer} href="http://localhost:3000//branch/vanak">
                                     <span>ونک</span>
                                 </Link>
