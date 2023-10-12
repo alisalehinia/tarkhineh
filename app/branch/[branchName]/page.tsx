@@ -13,7 +13,8 @@ import profile2 from "../../../public/profile2.png";
 import { Clock, LocateIcon, PhoneIcon, ScrollText } from 'lucide-react';
 import CarouselComponent from '@/components/ui/carousel';
 import Slider, { FoodItem, comment } from '@/components/ui/slider';
-import PureSlider from '@/components/ui/pureSlider';
+import PureReactCarousel from '@/components/ui/pureReactCarousel';
+import AntDCarousel from '@/components/ui/antdCarouesl';
 
 
 
@@ -214,11 +215,11 @@ const BranchPage = () => {
               </div>
               <div className='bg-green-700 rounded-lg p-4 mb-4'>
                 <h2 className='font-extrabold p-2 text-2xl text-white' > غذاهای ایرانی</h2>
-                  <Slider foodData={iranianFood} scroll={100} />
+                  <AntDCarousel foodData={iranianFood} scroll={100} />
                 </div>
                 <div>
                 <h2 className='font-extrabold p-2 text-2xl text-slate-800' > غذاهای محبوب</h2>
-                <Slider foodData={popularFoods} scroll={100} />
+                <AntDCarousel foodData={popularFoods} scroll={100} />
                 </div>
                 <div>
                 <button className='text-green-700 border-2 border-green-700 flex items-center gap-1 p-2 rounded-lg mx-auto mb-4'>
@@ -243,9 +244,14 @@ const BranchPage = () => {
               </div>
               <div className='mb-8'>
               <h2 className='font-extrabold p-2 text-2xl text-slate-800 text-center' >نظرات کاربران</h2>
-                <Slider commentsList={commentsList} scroll={800} />
+                <AntDCarousel commentsList={commentsList} scroll={800} />
               </div>
-              {/* <PureSlider foodItems={iranianFood} /> */}
+            {/* <div className='rtl'>
+            <PureReactCarousel />  
+            </div> */}
+            <div>
+              <AntDCarousel foodData={popularFoods} />
+            </div>
           </div>
   )
 }
