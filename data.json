@@ -1,0 +1,183 @@
+{
+    "popularFoods" : [
+        {
+          "image": "food1",
+          "name": "بادمجان شکم پر",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food2",
+          "name": "دلمه برگ کلم",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food3",
+          "name": "فیتن خوزستانی",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food4",
+          "name": "کالزونه اسفناج",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food1",
+          "name": "پیتزا قارچ",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food5",
+          "name": "دلمه برگ کلم",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food6",
+          "name": "راتاتویی",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        },
+        {
+          "image": "food1",
+          "name": "دلمه برگ کلم",
+          "price": "230,000",
+          "newPrice": "213,000",
+          "discount": "13",
+          "score": "4.5",
+          "numberOfScores": "53"
+        }
+      ],
+    "iranianFood": [
+        {
+        "image": "food6",
+        "name": "بورانی بادمجان",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food4",
+        "name": "کالزونه اسفناج",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food2",
+        "name": "راتاتویی",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food3",
+        "name": "دلمه برگ کلم",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food5",
+        "name": "بادمجان شکم پر",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food4",
+        "name": "دلمه برگ کلم",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food6",
+        "name": "دلمه برگ کلم",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        },
+        {
+        "image": "food1",
+        "name": "دلمه برگ کلم",
+        "price": "230,000",
+        "newPrice": "213,000",
+        "discount": "13",
+        "score": "4.5",
+        "numberOfScores": "53"
+        }
+    ],
+    "commentsList":[
+        {
+          "image": "profile1",
+          "name": "ارزو علیزاده",
+          "date": "25 شهریور",
+          "text": "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم."
+        },
+        {
+          "image": "profile2",
+          "name": "سردار وظیفه",
+          "date": "13 اسفند",
+          "text": "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم."
+        },
+        {
+          "image": "profile1",
+          "name": "ارزو علیزاده",
+          "date": "25 شهریور",
+          "text": "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم."
+        },
+        {
+          "image": "profile2",
+          "name": "سردار وظیفه",
+          "date": "13 اسفند",
+          "text": "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم."
+        },
+        {
+          "image": "profile1",
+          "name": "ارزو علیزاده",
+          "date": "25 شهریور",
+          "text": "از با صفا بودن شعبه اکباتان هر چی بگم کم گفتم. بهترین غذاهای گیاهی عمرمو اینجا خوردم. از مدیریت شعبه اکباتان رستوران‌های ترخینه واقعا تشکر میکنم."
+        }
+      ]
+      
+}

@@ -78,9 +78,7 @@ const Header = () => {
         setCategory(window.location.search.substring(startIndex))
     })
     
-    
-    
-
+   
   return (
     <header className="bg-slate-50 w-full flex items-center p-3 shadow mb-2">
           <div className="relative md:hidden block">

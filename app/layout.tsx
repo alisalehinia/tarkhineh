@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body>
         <Header/>
-        <main className='md:container mx-0'>
+        <main className='md:container mx-1'>
         {children}
         </main>
         <Footer />
