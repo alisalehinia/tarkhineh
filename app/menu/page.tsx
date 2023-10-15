@@ -252,10 +252,10 @@ const MenuPage = ({searchParams }:menuPageProps) => {
   return (
     <div>
        <div className="bg-slate-100 w-full p-2 flex gap-3 text-slate-800 mb-4">
-            <Link href="http://localhost:3000/menu?category=mainFood" className={`${searchParams?.category === 'mainFood'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`} >غذای اصلی</Link>
-            <Link href="http://localhost:3000/menu?category=Appetizer" className={`${searchParams?.category === 'Appetizer'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>پیش غذا</Link>
-            <Link href="http://localhost:3000/menu?category=Dessert" className={`${searchParams?.category === 'Dessert'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>دسر</Link>
-            <Link href="http://localhost:3000/menu?category=Beverages" className={`${searchParams?.category === 'Beverages'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>نوشیدنی</Link>
+            <Link href="/menu?category=mainFood" className={`${searchParams?.category === 'mainFood'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`} >غذای اصلی</Link>
+            <Link href="/menu?category=Appetizer" className={`${searchParams?.category === 'Appetizer'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>پیش غذا</Link>
+            <Link href="/menu?category=Dessert" className={`${searchParams?.category === 'Dessert'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>دسر</Link>
+            <Link href="/menu?category=Beverages" className={`${searchParams?.category === 'Beverages'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>نوشیدنی</Link>
        </div>
        <div className='bg-slate-50'>
         {searchParams?.category === 'mainFood' &&
