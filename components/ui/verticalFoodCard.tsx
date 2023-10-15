@@ -12,7 +12,7 @@ interface verticalFoodCardProps {
     discount:string,
     newPrice:string,
     numberOfScores:string,
-    Compounds:string
+    Compounds?:string
   }
 
 
@@ -20,17 +20,17 @@ const VerticalFoodCard = ({image,name,price,score,discount,newPrice,numberOfScor
   return (
     <div className="flex p-2 w-full m-1 bg-white rounded-lg ">
         <div className="">
-            <Image src={image} width="120" alt="food image" />
+            <Image src={image} width="120" className="rounded-md ml-1" alt="food image" />
         </div>
         <div className="flex-1  text-slate-800 p-1 w-1/3  ">
             <div className=" flex justify-between mb-1">
                 <h5 className="text-lg">{name}</h5>
                 <div>
-                    <HeartIcon className="w-6 h-6" />
+                    <HeartIcon className="w-6 h-6 text-rose-600" />
                 </div>
             </div>
             <div className=" flex  justify-between items-center mb-1 text-xs md:text-base">
-                <div className="max-w-[40%] md:max-w-[60%] overflow-hidden text-xs whitespace-nowrap md:whitespace-normal">{Compounds}</div>
+                {Compounds && <div className="max-w-[40%] md:max-w-[60%] overflow-hidden text-xs whitespace-nowrap md:whitespace-normal">{Compounds}</div>}
                 <div className="text-slate-400 line-through">{price}</div>
                 <div className="bg-rose-200 text-rose-700 rounded-lg p-1">{discount}%</div>
             </div>

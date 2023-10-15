@@ -100,10 +100,10 @@ const Header = () => {
                         <AccordionItem value="item-2" className="border-none">
                             <AccordionTrigger className=" py-0  p-2 border-b flex">منو</AccordionTrigger>
                                 <AccordionContent>
-                                <Link onClick={closeDrawer} className={`block p-2 border-b  `} href="/">غذای اصلی</Link>
-                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">پیش غذا</Link>
-                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">دسر</Link>
-                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/">نوشیدنی</Link>
+                                <Link onClick={closeDrawer} className={`block p-2 border-b  `} href="/menu/?category=mainFood">غذای اصلی</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/menu/?category=Appetizer">پیش غذا</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/menu/?category=Dessert">دسر</Link>
+                                <Link onClick={closeDrawer} className="block p-2 border-b " href="/menu/?category=Beverages">نوشیدنی</Link>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>

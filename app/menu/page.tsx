@@ -289,7 +289,57 @@ const MenuPage = ({searchParams }:menuPageProps) => {
                />
             ))}
           </div></>}
-
+              {
+                searchParams?.category === 'Appetizer' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'>پیش غذا </h3>
+                <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
+                  {Appetizers.map(food=>(
+                    <VerticalFoodCard key={food.name}
+                     image={food.image} 
+                     name={food.name}  
+                     price={food.price}
+                     score={food.score}
+                     discount={food.discount}
+                     newPrice={food.newPrice}
+                     numberOfScores={food.numberOfScores}
+                     Compounds='تخم مرغ، گردو، سیر، آرد، روغن مایع	
+                     سبزی کوکویی'
+                     />
+                  ))}
+                </div> </>
+              }
+              {
+                searchParams?.category === 'Dessert' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'> دسر </h3>
+                <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
+                  {Desserts.map(food=>(
+                    <VerticalFoodCard key={food.name}
+                     image={food.image} 
+                     name={food.name}  
+                     price={food.price}
+                     score={food.score}
+                     discount={food.discount}
+                     newPrice={food.newPrice}
+                     numberOfScores={food.numberOfScores}
+                     Compounds='بادمجان، پیاز، گوجه فرنگی	، سبزی خشک'
+                     />
+                  ))}
+                </div> </>
+              }
+              {
+                searchParams?.category === 'Beverages' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'> نوشیدنی </h3>
+                <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
+                  {Beverages.map(food=>(
+                    <VerticalFoodCard key={food.name}
+                     image={food.image} 
+                     name={food.name}  
+                     price={food.price}
+                     score={food.score}
+                     discount={food.discount}
+                     newPrice={food.newPrice}
+                     numberOfScores={food.numberOfScores}
+                     />
+                  ))}
+                </div> </>
+              }
        </div>
     </div>
   )
