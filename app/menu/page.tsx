@@ -25,6 +25,8 @@ import beve1 from "../../public/beverages/beverage1.jpg"
 import beve2 from "../../public/beverages/beverage2.jpg"
 import beve3 from "../../public/beverages/beverage3.jpg"
 import VerticalFoodCard from '@/components/ui/verticalFoodCard';
+import { Search } from 'lucide-react';
+import { useState } from 'react';
 
 const mainFoods={
   iranianFoods:[
@@ -246,23 +248,63 @@ interface menuPageProps {
 const MenuPage = ({searchParams }:menuPageProps) => {
 
     console.log("search params",searchParams.category);
-    
-    
 
+    const [searched,setSearched] = useState("");
+    console.log(searched);
+
+    const filteredMainFoods = mainFoods.iranianFoods.filter(food => {
+      if (searched === "") {
+        return true; 
+      }
+      return food.name.includes(searched);
+    });
+    const filteredFastFoods = mainFoods.fastFoods.filter(food => {
+      if (searched === "") {
+        return true; 
+      }
+      return food.name.includes(searched);
+    });
+    const filteredAppetizers = Appetizers.filter(food => {
+      if (searched === "") {
+        return true; 
+      }
+      return food.name.includes(searched);
+    });
+    const filteredDesserts = Desserts.filter(food => {
+      if (searched === "") {
+        return true; 
+      }
+      return food.name.includes(searched);
+    });
+    const filteredBeverages = Beverages.filter(food => {
+      if (searched === "") {
+        return true; 
+      }
+      return food.name.includes(searched);
+    });
   return (
     <div>
-       <div className="bg-slate-100 w-full p-2 flex gap-3 text-slate-800 mb-4">
+       <div className="bg-slate-100 w-full p-2 flex flex-col md:flex-row items-center text-slate-800 mb-4">
+           <div className='flex w-full md:w-1/2 gap-3 mb-2 md:mb-0'>
             <Link href="/menu?category=mainFood" className={`${searchParams?.category === 'mainFood'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`} >غذای اصلی</Link>
-            <Link href="/menu?category=Appetizer" className={`${searchParams?.category === 'Appetizer'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>پیش غذا</Link>
-            <Link href="/menu?category=Dessert" className={`${searchParams?.category === 'Dessert'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>دسر</Link>
-            <Link href="/menu?category=Beverages" className={`${searchParams?.category === 'Beverages'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>نوشیدنی</Link>
+              <Link href="/menu?category=Appetizer" className={`${searchParams?.category === 'Appetizer'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>پیش غذا</Link>
+              <Link href="/menu?category=Dessert" className={`${searchParams?.category === 'Dessert'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>دسر</Link>
+              <Link href="/menu?category=Beverages" className={`${searchParams?.category === 'Beverages'? "text-green-500 transition-all duration-300 pb-1 border-b border-green-500" :"text-slate-800 border-b pb-1 border-slate-50"}`}>نوشیدنی</Link>
+           </div>
+           <div className='flex relative w-full md:w-1/2 '>
+              <input placeholder='جستجو' 
+              value={searched}
+              onChange={(e)=>setSearched(e?.target.value)}
+              className='  border-none w-full  outline-none focus:outline-none p-2 rounded-md text-slate-800 placeholder:text-slate-500 ' />
+              <Search className='w-6 h-6 absolute left-1 top-2 text-slate-500' />
+           </div>
        </div>
        <div className='bg-slate-50'>
         {searchParams?.category === 'mainFood' &&
           <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'>غذای ایرانی</h3>
           <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
-            {mainFoods.iranianFoods.map(food=>(
-              <VerticalFoodCard key={food.name}
+            {filteredMainFoods.map((food,index)=>(
+              <VerticalFoodCard key={index}
                image={food.image} 
                name={food.name}  
                price={food.price}
@@ -276,8 +318,8 @@ const MenuPage = ({searchParams }:menuPageProps) => {
           </div>
           <h3 className='text-slate-800 mb-2 text-xl font-bold p-2'>فست فود</h3>
           <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
-            {mainFoods.fastFoods.map(food=>(
-              <VerticalFoodCard key={food.name}
+            {filteredFastFoods.map((food,index)=>(
+              <VerticalFoodCard key={index}
                image={food.image} 
                name={food.name}  
                price={food.price}
@@ -292,8 +334,8 @@ const MenuPage = ({searchParams }:menuPageProps) => {
               {
                 searchParams?.category === 'Appetizer' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'>پیش غذا </h3>
                 <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
-                  {Appetizers.map(food=>(
-                    <VerticalFoodCard key={food.name}
+                  {filteredAppetizers.map((food,index)=>(
+                    <VerticalFoodCard key={index}
                      image={food.image} 
                      name={food.name}  
                      price={food.price}
@@ -310,8 +352,8 @@ const MenuPage = ({searchParams }:menuPageProps) => {
               {
                 searchParams?.category === 'Dessert' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'> دسر </h3>
                 <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
-                  {Desserts.map(food=>(
-                    <VerticalFoodCard key={food.name}
+                  {filteredDesserts.map((food,index)=>(
+                    <VerticalFoodCard key={index}
                      image={food.image} 
                      name={food.name}  
                      price={food.price}
@@ -327,8 +369,8 @@ const MenuPage = ({searchParams }:menuPageProps) => {
               {
                 searchParams?.category === 'Beverages' && <><h3 className='text-slate-800 mb-2 text-xl font-bold p-2'> نوشیدنی </h3>
                 <div className=' grid grid-cols-1 md:grid-cols-2  gap-1 md:gap-2 md:p-1'>
-                  {Beverages.map(food=>(
-                    <VerticalFoodCard key={food.name}
+                  {filteredBeverages.map((food,index)=>(
+                    <VerticalFoodCard key={index}
                      image={food.image} 
                      name={food.name}  
                      price={food.price}
