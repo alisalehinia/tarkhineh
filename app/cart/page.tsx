@@ -2,9 +2,11 @@
 
 import { useOrder } from '@/context/OrderContext';
 import vector from "@/public/Vector.png";
-import { CheckCircleIcon, CheckIcon, Info, InfoIcon, MinusIcon, Package, PackageCheck, PlusIcon, ShoppingBag, Trash, Truck, UserCheck } from 'lucide-react';
-import Image from 'next/image';
+import payment from "@/public/homePage_menu/payment.png"
+import { CheckCircleIcon, CheckIcon, Info, InfoIcon, LocateIcon, MinusIcon, Package, PackageCheck, PlusIcon, ShoppingBag, StickyNote, Trash, Truck, UserCheck } from 'lucide-react';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { Order } from '@/context/OrderContext';
 
 function EmptyCart(){
   return <div className='border border-slate-500 rounded-md flex items-center justify-center'>
@@ -19,15 +21,50 @@ function EmptyCart(){
         </div>
   </div>
 }
+const calculateTotalPrice = (orders:Order[]) => {
+  // Initialize the total price to 0
+  let totalPrice = 0;
+
+  // Iterate through the orders and sum the 'newPrice' values
+  for (const order of orders) {
+    // Parse the 'newPrice' as a float (assuming it's a string representing a price)
+    const price = parseFloat(order.newPrice);
+
+    // Check if 'price' is a valid number
+    if (!isNaN(price)) {
+      totalPrice += price * order.quantity;
+    }
+  }
+  return totalPrice;
+}
 function OrdersList(){
   const { state, dispatch } = useOrder();
+  const totalPrice = calculateTotalPrice(state.orders);
 
-  const addOrder = (item: string) => {
-    dispatch({ type: 'ADD_ORDER', order: { item, quantity: 1 } });
+  const addOrder = (item: {
+    name: string,
+    quantity: number,
+    newPrice: string,
+    image:StaticImageData,
+  }) => {
+    dispatch({ type: 'ADD_ORDER', order: {
+       name: item.name, 
+       newPrice: item.newPrice,
+       image:item.image, 
+       quantity: 1 } });
   };
 
-  const deleteOrder = (item: string) => {
-    dispatch({ type: 'DELETE_ORDER', order: { item, quantity: 1 } });
+  const deleteOrder = (item: {
+    name: string,
+    quantity: number,
+    newPrice: string,
+    image:StaticImageData,
+  }) => {
+    dispatch({ type: 'DELETE_ORDER', order: {
+      name: item.name, 
+      newPrice: item.newPrice,
+      image:item.image, 
+      quantity: 1 } });
   };
 
   const clearOrders = () => {
@@ -47,21 +84,24 @@ function OrdersList(){
           {
             state.orders.map((order,index)=>(
               <div key={index} className={`flex bg-slate-100 m-1 justify-between sm:px-2 px-1 py-1 rounded-lg ${index%2!==0 ? "bg-white" : "bg-slate-100"}`}>
-                  <div className=' '>
-                    <div>
-                      {order.item}
+                  <div className='flex items-center gap-2 '>
+                    <div className='rounded-lg overflow-hidden'>
+                      <Image className='hover:scale-110 transition-all duration-75' src={order.image} alt="image cart"  width={65} height={65} />
                     </div>
-                    <div className='text-sm'>122,000</div>
+                    <div>
+                      {order.name}
+                    </div>
+                    <div className='text-sm'>{order.newPrice}</div>
                   </div>
                   <div className='flex justify-between items-center gap-1'>
                     <button className='p-1 rounded-full bg-green-100'>
-                      <PlusIcon onClick={()=>addOrder(order.item)} className='w-5 h-5 text-green-600'  />
+                      <PlusIcon onClick={()=>addOrder({name:order.name,quantity:1,newPrice:order.newPrice,image:order.image})} className='w-5 h-5 text-green-600'  />
                     </button>
                     <div className='p-1'>
                       {order.quantity}
                     </div>
                     <button className='p-1 rounded-full bg-rose-100'>
-                      <MinusIcon onClick={()=>deleteOrder(order.item)} className='w-5 h-5 text-rose-600'  />
+                      <MinusIcon onClick={()=>deleteOrder({name:order.name,quantity:1,newPrice:order.newPrice,image:order.image})} className='w-5 h-5 text-rose-600'  />
                     </button>
                   </div>
               </div>
@@ -70,7 +110,7 @@ function OrdersList(){
         </div>
         <div className='flex justify-between items-center p-1 py-2 border-b-2 '>
           <div >تخفیف محصولات</div>
-          <div>63,000</div>
+          <div>{13/100 * totalPrice }</div>
         </div>
         <div className=' py-2 border-b-2 '>
           <div className='flex justify-between items-center p-1 pb-2'>
@@ -86,7 +126,7 @@ function OrdersList(){
           <div className='flex justify-between items-center p-1 pb-2 mb-2'>
             <div> مبلغ قابل پرداخت</div>
             <div className='flex items-center gap-1'>
-              <p>220,000</p>
+              <p>{`${totalPrice}000`}</p>
               <p>تومان</p>
             </div>
           </div>
@@ -127,7 +167,7 @@ export default function CartPage({searchParams }:menuPageProps) {
           </Link>
       </div>
       {state.orders.length === 0 && <EmptyCart /> }
-      {state.orders.length !== 0 &&
+      {state.orders.length !== 0 && searchParams.step!=="payment" &&
       <div className='flex flex-col sm:flex-row gap-y-2'>
         <div className={` ${w_info_step_1} ${w_info_step_2} transition-all duration-150 `}>
           <div className='flex justify-between md:items-center md:flex-row flex-col text-sm md:text-base bg-slate-50 mx-2 text-slate-700 py-4  rounded-md'>
@@ -148,12 +188,52 @@ export default function CartPage({searchParams }:menuPageProps) {
               <PackageCheck className='w-6 h-6'  />
             </div>
           </div>
+          <div className='p-2 bg-slate-50 rounded-md text-slate-700 m-2 '>
+            <div className='flex justify-between items-center py-2 border-b  '>
+              <div className='flex items-center gap-1'>
+                <LocateIcon className='w-6 h-6' />
+                <p>ادرس ها</p>
+              </div>
+              <div className='text-green-500 flex items-center gap-1'>
+                <PlusIcon  className='w-6 h-6' />
+                <p>افزودن ادرس</p>
+              </div>
+            </div>
+            <div className='my-8 flex items-center justify-center'>
+              <Image src={vector} alt="vector" className=' ' />
+            </div>
+          </div>
+          <div className='p-2 bg-slate-50 rounded-md text-slate-700 m-2'>
+            <div className='flex items-center gap-1 mb-4'>
+              <StickyNote className='w-6 h-6' />
+              <h6>توضیحات سفارش(اختیاری)</h6>
+            </div>
+            <textarea 
+            placeholder='نکات ضروری که باید بدونیم ...'
+            className='focus:shadow-md bg-slate-200 w-full rounded-lg border-none focus:border-none focus:outline-none p-2 text-slate-700' cols={30} rows={4}></textarea>
+          </div>
         </div>
         <div className={` ${w_recept_step_1} ${w_recept_step_2} transition-all duration-150`}>
           <OrdersList />
         </div>
       </div>
       }
+      <div>
+         {searchParams.step==="payment" && state.orders.length !== 0 && <>
+         <div className='flex flex-col items-center gap-y-6 mb-2'>
+          <Image src={payment} alt="payment" />
+          <p className='-ml-4 text-xl sm:text-3xl text-green-600 font-semibold mb-2'>پرداخت شما با موفقیت انجام شد.</p>
+         </div>
+         <div className='text-center mb-4 text-green-600'>
+          <p>کد رهگیری سفارش شما:  ۲۱۵۴۹۰۱۹</p>
+         </div>
+         <div className=' flex justify-center items-center text-sm sm:text-base gap-4 mb-4'>
+            <button className='p-2 rounded-md border border-green-600 text-green-600 hover:bg-green-600 hover:text-white'>بازگشت به صفحه اصلی</button>
+            <button className='p-2 rounded-md text-white bg-green-600 hover:bg-white hover:text-green-600'>پیگیری سفارش</button>
+         </div>
+         </>
+         }
+      </div>
   </div>
   );
 }

@@ -1,12 +1,15 @@
 'use client';
 
+import { StaticImageData } from 'next/image';
 import { createContext, useContext, useReducer, ReactNode, Dispatch } from 'react';
 import toast from 'react-hot-toast';
 
 // Define the order type with a quantity field
-interface Order {
-  item: string;
+export interface Order {
+  name: string;
   quantity: number;
+  newPrice: string;
+  image:StaticImageData;
 }
 
 // Define the context state and actions
@@ -32,32 +35,32 @@ const OrderContext = createContext<{ state: OrderContextState; dispatch: Dispatc
 const orderReducer = (state: OrderContextState, action: OrderAction): OrderContextState => {
   switch (action.type) {
     case 'ADD_ORDER':
-      const existingOrder = state.orders.find((order) => order.item === action.order.item);
+      const existingOrder = state.orders.find((order) => order.name === action.order.name);
       if (existingOrder) {
         // If the order already exists, increase the quantity
         existingOrder.quantity += 1;
-        toast.success(`تعداد ${action.order.item} افزایش یافت.`)
+        toast.success(`تعداد ${action.order.name} افزایش یافت.`)
         return { ...state, orders: [...state.orders] };
       } else {
         // If it's a new order, add it to the list
-        toast.success(`${action.order.item} به سبد خرید اضافه شد.`)
+        toast.success(`${action.order.name} به سبد خرید اضافه شد.`)
         return { ...state, orders: [...state.orders, action.order] };
       }
 
       case 'DELETE_ORDER':
         // Find the index of the order to delete
-        const orderIndex = state.orders.findIndex((order) => order.item === action.order.item);
+        const orderIndex = state.orders.findIndex((order) => order.name === action.order.name);
   
         if (orderIndex !== -1) {
           const updatedOrders = [...state.orders];
   
           if (state.orders[orderIndex].quantity > 1) {
             // If the quantity is more than 1, decrease it
-            toast(`تعداد ${action.order.item} کاهش یافت.`)
+            toast(`تعداد ${action.order.name} کاهش یافت.`)
             state.orders[orderIndex].quantity -= 1;
           } else {
-            // If the quantity is 1, remove the item
-            toast(`${action.order.item} از سبد حذف شد.`)
+            // If the quantity is 1, remove the name
+            toast(`${action.order.name} از سبد حذف شد.`)
             updatedOrders.splice(orderIndex, 1);
           }
   

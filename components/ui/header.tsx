@@ -28,9 +28,15 @@ import {
 import { useOrigin } from "@/hooks/use-origin";
 import { useEffect, useRef, useState } from "react";
 import Drawer from "./drawer";
+import { useOrder } from "@/context/OrderContext";
 
 
 const Header = () => {
+
+    const { state } = useOrder();
+
+    // Calculate the total number of orders
+    const totalOrders = state.orders.length;
 
     const pathName = usePathname();
     console.log(pathName);
@@ -252,7 +258,8 @@ const Header = () => {
                 </AlertDialogContent>
             </AlertDialog>}
                 <Link href="/cart">
-                    <Button className="p-2 bg-green-200 hover:bg-green-400">
+                    <Button className="p-2 bg-green-200 hover:bg-green-400 relative">
+                        {totalOrders!==0 && <div className="bg-green-500 p-2 rounded-full w-4 h-4 flex justify-center items-center absolute -left-1 -top-1 text-sm " >{totalOrders}</div>}
                         <ShoppingCart className="w-5 h-5 text-green-800"/>
                     </Button>
                 </Link>

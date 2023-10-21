@@ -21,12 +21,22 @@ const VerticalFoodCard = ({image,name,price,score,discount,newPrice,numberOfScor
     // !------------------- order context
 const { state, dispatch } = useOrder();
 
-const addOrder = (item: string) => {
-  dispatch({ type: 'ADD_ORDER', order: { item, quantity: 1 } });
+const addOrder = (item: {
+  name: string,
+  quantity: number,
+  newPrice: string,
+  image:StaticImageData,
+}) => {
+  dispatch({ type: 'ADD_ORDER', order: {name:item.name,quantity:1,newPrice:item.newPrice,image:item.image}});
 };
 
-const deleteOrder = (item: string) => {
-  dispatch({ type: 'DELETE_ORDER', order: { item, quantity: 1 } });
+const deleteOrder = (item: {
+  name: string,
+  quantity: number,
+  newPrice: string,
+  image:StaticImageData,
+}) => {
+  dispatch({ type: 'DELETE_ORDER',order: {name:item.name,quantity:1,newPrice:item.newPrice,image:item.image}});
 };
 
 const clearOrders = () => {
@@ -55,7 +65,7 @@ const clearOrders = () => {
             <div className="bg-white flex flex-col  w-full md:flex-row justify-end items-center gap-x-2 ">
                 <Rate allowHalf className="text-sm  lg:text-base mb-2" defaultValue={Number(score)}  />
                 <button 
-                 onClick={() => addOrder(name)}
+                 onClick={() => addOrder({name:name,quantity:1,newPrice:newPrice,image:image})}
                 className="text-white w-full p-2 text-xs lg:text-base rounded-md bg-green-500 hover:bg-green-600 md:flex-1">افزودن به سبد خرید</button>
             </div>
         </div>
