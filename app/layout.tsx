@@ -3,7 +3,9 @@ import '../public/fonts.css'
 import type { Metadata } from 'next'
 import Header from '@/components/ui/header'
 import Footer from '@/components/ui/footer'
+import { OrderProvider } from '@/context/OrderContext'
 
+import  { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Tarkhineh | restaurant',
@@ -19,11 +21,14 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body>
+        <OrderProvider>
         <Header/>
         <main className='md:container mx-1'>
         {children}
         </main>
         <Footer />
+        <Toaster position='bottom-left' />
+        </OrderProvider>
       </body>
     </html>
   )

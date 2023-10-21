@@ -28,6 +28,7 @@ import VerticalFoodCard from '@/components/ui/verticalFoodCard';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
 
+
 const mainFoods={
   iranianFoods:[
     {
@@ -282,6 +283,9 @@ const MenuPage = ({searchParams }:menuPageProps) => {
       }
       return food.name.includes(searched);
     });
+
+
+    
   return (
     <div>
        <div className="bg-slate-100 w-full p-2 flex flex-col md:flex-row items-center text-slate-800 mb-4">

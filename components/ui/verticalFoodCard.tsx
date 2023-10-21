@@ -1,5 +1,6 @@
 'use client';
 
+import { useOrder } from "@/context/OrderContext";
 import { Rate } from "antd";
 import { HeartIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
@@ -15,9 +16,25 @@ interface verticalFoodCardProps {
     Compounds?:string
   }
 
-
 const VerticalFoodCard = ({image,name,price,score,discount,newPrice,numberOfScores,Compounds}:verticalFoodCardProps) => {
-  return (
+    
+    // !------------------- order context
+const { state, dispatch } = useOrder();
+
+const addOrder = (item: string) => {
+  dispatch({ type: 'ADD_ORDER', order: { item, quantity: 1 } });
+};
+
+const deleteOrder = (item: string) => {
+  dispatch({ type: 'DELETE_ORDER', order: { item, quantity: 1 } });
+};
+
+const clearOrders = () => {
+  dispatch({ type: 'CLEAR_ORDERS' });
+};
+
+  
+    return (
     <div className="flex p-2 w-full m-1 bg-white rounded-lg ">
         <div className="">
             <Image src={image} width="120" className="rounded-md ml-1" alt="food image" />
@@ -37,7 +54,9 @@ const VerticalFoodCard = ({image,name,price,score,discount,newPrice,numberOfScor
             <div className="bg-gree-500 text-left text-slate-800 mb-2">{newPrice}تومان</div>
             <div className="bg-white flex flex-col  w-full md:flex-row justify-end items-center gap-x-2 ">
                 <Rate allowHalf className="text-sm  lg:text-base mb-2" defaultValue={Number(score)}  />
-                <button className="text-white w-full p-2 text-xs lg:text-base rounded-md bg-green-500 hover:bg-green-600 md:flex-1">افزودن به سبد خرید</button>
+                <button 
+                 onClick={() => addOrder(name)}
+                className="text-white w-full p-2 text-xs lg:text-base rounded-md bg-green-500 hover:bg-green-600 md:flex-1">افزودن به سبد خرید</button>
             </div>
         </div>
     </div>

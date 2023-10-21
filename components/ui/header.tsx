@@ -124,8 +124,9 @@ const Header = () => {
             </li>
             <li className={`group relative `} >
                 <Link href="/branch" 
-                className="flex gap-1 items-end justify-end  pb-1"
+                className="flex gap-1 items-end justify-end pb-1"
                 onClick={closeDrawer}
+
                 >
                    
                     {params?.branchName === "ekbatan" ? <span className="text-green-600 font-semibold border-b border-green-600 pb-1"> اکباتان</span>: 
@@ -147,7 +148,7 @@ const Header = () => {
                    ||  params?.branchName === "vanak"
                     ? 'text-green-500' : ''}`} />
                 </Link>
-                <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-10">
+                <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-30">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
                             <li className={`p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between ${params?.branchName === "ekbatan" ? "text-green-500" : "text-slate-800"}`}>
@@ -184,7 +185,7 @@ const Header = () => {
                 ><span>منو</span>
                 <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-all duration-150" />
                 </Link>
-                <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-10">
+                <div className="hidden group-hover:block absolute top-6 right-0 hover:block z-40">
                     <nav className=" bg-white rounded-lg shadow  border border-slate-200 text-sm font-medium leading">
                         <ul  style={{width:"12rem"}}className=" bg-white rounded-lg text-sm font">
                             <li className="p-2 bg-slate-50 m-2 rounded-lg hover:bg-slate-200/80 cursor-pointer flex items-center justify-between">
@@ -250,9 +251,11 @@ const Header = () => {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>}
-            <Button  className="p-2 bg-green-200 hover:bg-green-400">
-                <ShoppingCart className="w-5 h-5 text-green-800"/>
-            </Button>
+                <Link href="/cart">
+                    <Button className="p-2 bg-green-200 hover:bg-green-400">
+                        <ShoppingCart className="w-5 h-5 text-green-800"/>
+                    </Button>
+                </Link>
             <Button className="p-2 bg-green-200 hover:bg-green-400 group relative">
                 <User className="w-5 h-5  text-green-800" />
                 <ChevronDown className="w-5 h-5  text-green-800 group-hover:rotate-180 transition-all duration-150"/>
