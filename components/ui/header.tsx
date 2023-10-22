@@ -113,9 +113,9 @@ const Header = () => {
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
-                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>اعطای نمایندگی</Link>
-                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>درباره ما</Link>
-                    <Link href="/"  className="block p-2 border-b " onClick={closeDrawer}>تماس باما</Link>
+                    <Link href="/Deputize"  className="block p-2 border-b " onClick={closeDrawer}>اعطای نمایندگی</Link>
+                    <Link href="/about-us"  className="block p-2 border-b " onClick={closeDrawer}>درباره ما</Link>
+                    <Link href="/contact-us"  className="block p-2 border-b " onClick={closeDrawer}>تماس باما</Link>
 
 
                 </Drawer>
