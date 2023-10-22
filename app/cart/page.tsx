@@ -110,7 +110,7 @@ function OrdersList(){
         </div>
         <div className='flex justify-between items-center p-1 py-2 border-b-2 '>
           <div >تخفیف محصولات</div>
-          <div>{13/100 * totalPrice }</div>
+          <div>{(13/100 * totalPrice).toFixed(2) }</div>
         </div>
         <div className=' py-2 border-b-2 '>
           <div className='flex justify-between items-center p-1 pb-2'>
