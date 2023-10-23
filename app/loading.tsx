@@ -1,9 +1,11 @@
-import React from 'react'
+import * as React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
-const Loading = () => {
+export default function CircularIndeterminate() {
   return (
-    <span className="loading loading-ring loading-xs"></span>
-  )
+    <Box sx={{ display: 'flex',justifyContent:"center",marginY:"10px" }}>
+      <CircularProgress color="success" />
+    </Box>
+  );
 }
-
-export default Loading
